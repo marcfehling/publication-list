@@ -17,7 +17,7 @@ publications.html: Makefile
 	rm -rf temp/
 
 sort: Makefile
-	biber --tool publications-2022.bib
+	biber --tool publications*.bib
 
 # for now always force a rebuild:
 .PHONY: publications.html latex
