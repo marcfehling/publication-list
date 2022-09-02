@@ -67,7 +67,7 @@ pipeline
           {
             // sort entries and fail if changes were made
             sh '''#!/bin/bash
-               biber --tool publications-2022.bib
+               biber --tool publications*.bib
                git diff
 	       git diff-files --quiet || exit $?
                '''
