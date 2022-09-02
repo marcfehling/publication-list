@@ -16,5 +16,8 @@ publications.html: Makefile
 	sed -i '/publications.include/d' publications.html
 	rm -rf temp/
 
+sort: Makefile
+	biber --tool publications-2022.bib
+
 # for now always force a rebuild:
 .PHONY: publications.html latex
