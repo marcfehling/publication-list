@@ -56,6 +56,24 @@ pipeline
           }
         }
 
+        stage("sort")
+        {
+          post {
+            failure {
+              githubNotify context: 'CI', description: 'publications not sorted',  status: 'FAILURE'
+            }
+          }
+          steps
+          {
+            // sort entries and fail if changes were made
+            sh '''#!/bin/bash
+               biber --tool publications-2022.bib
+               git diff
+	       git diff-files --quiet || exit $?
+               '''
+          }
+        }
+
         stage("latex")
         {
           post {
