@@ -66,10 +66,10 @@ pipeline
           steps
           {
             // sort entries and fail if changes were made
-            sh '''#!/bin/bash
-               biber --tool publications*.bib
+            sh '''
+               make sort
                git diff
-	       git diff-files --quiet || exit $?
+               git diff-files --quiet || exit $?
                '''
           }
         }
