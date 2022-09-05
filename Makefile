@@ -18,7 +18,7 @@ publications.html: Makefile
 
 sort: Makefile
 	for f in publications-2022.bib ; do \
-		biber --tool --configfile=biber-tool.conf $$f ; \
+		biber --tool $$f ; \
 	done
 
 # for now always force a rebuild:
