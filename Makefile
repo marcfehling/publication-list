@@ -21,5 +21,10 @@ sort: Makefile
 		biber --tool $$f ; \
 	done
 
+check: Makefile
+	for f in publications-2022.bib ; do \
+		biber --tool --validate-config --validate-datamodel $$f ; \
+	done
+
 # for now always force a rebuild:
 .PHONY: publications.html latex

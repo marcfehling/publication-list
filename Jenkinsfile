@@ -65,8 +65,12 @@ pipeline
           }
           steps
           {
-            // sort entries and fail if changes were made
+            // verify entries and check for warnings,
+            // then sort entries and check if files have changed
             sh '''
+               biber --tool --validate-datamodel --output=bibertool.bib \
+                     --logfile=bibertool.blg publications-*.bib
+               grep WARN bibertool.blg && exit 1
                make sort
                git diff
                git diff-files --quiet || exit $?
