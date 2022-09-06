@@ -18,12 +18,7 @@ publications.html: Makefile
 
 sort: Makefile
 	for f in publications-2022.bib ; do \
-		biber --tool $$f ; \
-	done
-
-check: Makefile
-	for f in publications-2022.bib ; do \
-		biber --tool --validate-config --validate-datamodel $$f ; \
+		biber --tool --validate-datamodel $$f ; \
 	done
 
 # for now always force a rebuild:
